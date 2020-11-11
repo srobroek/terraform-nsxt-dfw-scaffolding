@@ -18,7 +18,7 @@ Automatically build your NSX DFW scaffolding using terraform
   - other groups
   - tags 
 - groups don't support mixed types
-- all your groups must exist before running this TF, it will not automatically create groups not mentioned in the groups.yml
+- all your groups not mentioned in the groups.yml must exist before running this TF, it will not automatically create groups on-demand. 
 - creation of firewall rules are a WIP 
 - tags must be noted as scope|tag in the condition for tag_groups. This is a limitation of the NSX-T API. 
 - things might probably break or cause things to catch on fire. caveat emptor and all. 
