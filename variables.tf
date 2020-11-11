@@ -45,9 +45,9 @@ variable groups_yml_file {
   type = string
 }
 
-variable security_policies_yml_file {
-  type = string
-}
+#variable security_policies_yml_file {
+#  type = string
+#}
 
 
 
