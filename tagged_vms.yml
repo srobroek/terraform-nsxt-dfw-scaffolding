@@ -1,0 +1,93 @@
+#tags
+
+
+- sddc:
+    scope: environment
+    vms:
+      - vm1
+      - vm2
+      - vm3
+
+- vra:
+    scope: application
+    vms:
+      - vm1
+      - vm2
+      - vm3
+
+- vrops:
+    scope: application
+    vms:
+      - vm1
+      - vm2
+      - vm3
+
+- ws1a-reg:
+    scope: application
+    vms:
+      - vm1
+      - vm2
+      - vm3
+
+- ws1a-xreg:
+    scope: application
+    vms:
+      - vm1
+      - vm2
+      - vm3
+
+- vrli:
+    scope: application
+    vms:
+      - vm1
+      - vm2
+      - vm3
+
+- vrlcm:
+    scope: application
+    vms:
+      - vm1
+      - vm2
+      - vm3
+
+- data:
+    scope: role
+    vms:
+      - vm1
+      - vm2
+      - vm3
+
+- master:
+    scope: role
+    vms:
+      - vm1
+      - vm2
+      - vm3
+
+- replica:
+    scope: role
+    vms:
+      - vm1
+      - vm2
+      - vm3
+
+- collector:
+    scope: role
+    vms:
+      - vm1
+      - vm2
+      - vm3
+
+- analytics:
+    scope: role
+    vms:
+      - vm1
+      - vm2
+      - vm3
+
+- platform:
+    scope: role
+    vms:
+      - vm1
+      - vm2
+      - vm3
