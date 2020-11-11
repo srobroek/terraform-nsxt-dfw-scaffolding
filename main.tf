@@ -27,7 +27,7 @@ locals {
   lb_groups = {for key, value in local.groups_yml: key => value if value["type"] == "lb_group"}  
   placeholder_groups = {for key, value in local.groups_yml: key => value if value["type"] == "placeholder_group"}  
 
-  security_policies = yamldecode(file(var.security_policies_yml_file))["policies"]
+#  security_policies = yamldecode(file(var.security_policies_yml_file))["policies"]
 }
 
 
