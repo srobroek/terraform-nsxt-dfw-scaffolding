@@ -179,12 +179,6 @@ groups:
         condition: 
           - 1.2.3.4
           - 2.3.4.5
-  app.data.commvault.infra:
-      
-        type:   ip_group
-        condition: 
-          - 1.2.3.4
-          - 2.3.4.5
 
   consumes.cfapi.all.vrli.sddc: 
       type:   member_group
@@ -459,10 +453,7 @@ groups:
       condition:
         - app.collector.vrni.sddc
         - app.all.esxi.sddc
-  consumes.backup.data.commvault.infra: 
-      type:   member_group
-      condition:
-        - net.all.backup.infra
+
 
   provides.cfapi.all.vrli.sddc:
       type:   member_group
@@ -656,10 +647,7 @@ groups:
       type:   member_group
       condition:
         - app.all.vrli.sddc
-  provides.backup.data.commvault.infra:
-      type:   member_group
-      condition:
-        - app.data.commvault.infra
+
 
 
   net.all.admin.infra: 
@@ -672,17 +660,7 @@ groups:
       condition:
         - 1.2.3.0/24
 
-  net.all.backup.infra: 
-      type:   ip_group
-      condition:
-        - 1.2.3.0/24
-
-
-  segment.backup.infra: 
-      type:   segment_group
-      condition:
-        - VLAB01-VTEP
-
+## Update to contain the names of your SDDC segments
   segment.all.sddc: 
     type:   segment_group
     condition:
@@ -690,15 +668,7 @@ groups:
       - VLAB02-VTEP
 
 
-## enter your existing loadbalancer_group groups here
-  NLB.VIP.[a]:
-    type: existing_group
-    condition: 
-      - stub
-  NLB.VIP.[vc]:
-    type: existing_group
-    condition: 
-      - stub
+
   
 ## Enter your empty groups here 
   emergency allow:
