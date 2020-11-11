@@ -15,6 +15,7 @@ Automatically build your NSX DFW scaffolding using terraform
 
 - groups currently only support one of the following member types:
   - ip addresses
+  - segments
   - other groups
   - tags 
 - groups don't support mixed types
