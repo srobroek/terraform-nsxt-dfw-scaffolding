@@ -9,6 +9,6 @@ nsxt_cluster_password="sup3rs3cr3t"
 
 tags_yml_file = "./tags.yml" 
 groups_yml_file = "./groups.yml"
-security_policies_yml_file = "./security_policies.yml"
+
 
 
