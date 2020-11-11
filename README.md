@@ -7,7 +7,7 @@ Automatically build your NSX DFW scaffolding using terraform
 - Install terraform
 - run terraform init in the current working directory
 - fill out the relevant variables in terraform.tfvars
-- update the groups.yml, tags.yml to your liking. Format should be pretty clear. By default it will create a set of microsegmentation rules. However, you will still have to update all the ip_groups and segment groups (for obvious reasons)
+- update the groups.yml, tags.yml to your liking. Format should be pretty clear. By default it will create a set of groups and tags used in a consumer/provider microsegmentation model for VMware VCF/VVD, but this can obviously be customised to whatever your application looks like and can be used in a repeatable fashion to automatically provisioning microsegmentation architectures. However, even when using the defaults you will still have to update all the ip_groups and segment groups (for obvious reasons)
 - run terraform apply and watch the magic
 
 
