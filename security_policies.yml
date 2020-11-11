@@ -1,0 +1,31 @@
+policies:
+  emergency reject:
+    category: "Emergency"
+    tcp_strict: true
+    stateful: true 
+
+    rules:
+      emergency reject out: 
+        action: "REJECT"
+        source_groups: 
+          - "emergency reject"
+          - "emergency allow"
+        destination_groups:
+          - Any
+        logged: true
+        scope: 
+          - Any 
+      emergency reject in: 
+        action: "REJECT"
+        source_groups: 
+          - Any
+        destination_groups:
+          - "emergency reject"
+          - "emergency allow"
+        logged: true
+        scope: 
+          - Any 
+
+
+
+

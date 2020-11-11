@@ -1,0 +1,14 @@
+
+### Define your authentication
+nsxt_cluster_fqdn="f.q.d.n"
+nsxt_cluster_allow_unverified_ssl=true
+nsxt_cluster_username="admin"
+nsxt_cluster_password="sup3rs3cr3t"
+
+
+
+tags_yml_file = "./tags.yml" 
+groups_yml_file = "./groups.yml"
+rules_csv = "./rules.csv"  
+
+

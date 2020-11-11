@@ -1,0 +1,708 @@
+
+
+
+groups:
+
+  app.all.vra.sddc:
+      
+      type: tag_group
+      condition: 
+        - environment|sddc
+        - application|vra
+  app.all.vrlcm.sddc:
+      
+      type: tag_group
+      condition: 
+        - environment|sddc
+        - application|vrlcm
+  app.all.vrli.sddc:
+      
+      type: tag_group
+      condition: 
+        - environment|sddc
+        - application|vrli
+        
+  app.all.vrni.sddc:
+      
+      type: tag_group
+      condition: 
+        - environment|sddc
+        - application|vrni
+  app.collector-dr.vrni.sddc:
+      type: ip_group 
+      condition:
+        - 1.2.3.4
+  app.all.vrops.sddc:   
+      type: tag_group
+      condition: 
+        - environment|sddc
+        - application|vrops
+  app.all.ws1a-reg.sddc:
+      
+      type: tag_group
+      condition: 
+        - environment|sddc
+        - application|ws1a-reg
+  app.all.ws1a-xreg.sddc:
+      
+      type: tag_group
+      condition: 
+        - environment|sddc
+        - application|ws1a-xreg
+  app.collector.vrops.sddc:
+      
+      type: tag_group
+      condition: 
+        - environment|sddc
+        - application|vrops
+        - role|collector
+  app.data.vrops.sddc:
+      type: tag_group
+      condition: 
+        - environment|sddc
+        - application|vrops
+        - role|data
+  app.lb.vra.sddc:
+      type: lb_group
+      condition: 
+          - NLB.VIP.[a]
+
+  app.lb.vrops.sddc:
+        type: lb_group
+        condition: 
+          - NLB.VIP.[a]
+
+  app.lb.ws1a-reg.sddc:
+      
+        type: lb_group
+        condition: 
+          - NLB.VIP.[a]
+  app.lb.ws1a-xreg.sddc:
+      
+        type: lb_group
+        condition: 
+          - NLB.VIP.[a]
+  app.master.vrops.sddc:
+      
+        type: tag_group
+        condition: 
+          - environment|sddc
+          - application|vrops
+          - role|master
+  app.replica.vrops.sddc:
+        type: tag_group       
+        condition: 
+          - environment|sddc
+          - application|vrops
+          - role|replica
+  app.analytics.vrops.sddc:
+        type: tag_group        
+        condition: 
+          - environment|sddc
+          - application|vrops
+          - role|analytics
+  app.platform.vrni.sddc:
+        type: tag_group       
+        condition: 
+          - environment|sddc
+          - application|vrni
+          - role|platform
+  app.collector.vrni.sddc:
+        type: tag_group       
+        condition: 
+          - environment|sddc
+          - application|vrni
+          - role|collector
+  app.all.ad.infra:
+      
+        type:   ip_group
+        condition: 
+          - 1.2.3.4
+          - 2.3.4.5
+  app.all.dns.infra:
+      
+        type:   ip_group
+        condition: 
+          - 1.2.3.4
+          - 2.3.4.5
+  app.all.esxi.sddc:
+      
+        type:   ip_group
+        condition: 
+          - 1.2.3.4
+          - 2.3.4.5
+  app.all.nsxmgr.sddc:
+      
+        type:   ip_group
+        condition: 
+          - 1.2.3.4
+          - 2.3.4.5
+  app.all.ntp.infra:
+      
+        type:   ip_group
+        condition: 
+          - 1.2.3.4
+          - 2.3.4.5
+  app.all.proxy.infra:
+      
+        type:   ip_group
+        condition: 
+          - 1.2.3.4
+          - 2.3.4.5
+  app.all.sddcmgr.sddc:
+      
+        type:   ip_group
+        condition: 
+          - 1.2.3.4
+          - 2.3.4.5
+  app.all.smtp.infra:
+      
+        type:   ip_group
+        condition: 
+          - 1.2.3.4
+          - 2.3.4.5
+  app.all.syslog.infra:
+      
+        type:   ip_group
+        condition: 
+          - 1.2.3.4
+          - 2.3.4.5
+  app.all.vcenter.sddc:
+      
+        type:   ip_group
+        condition: 
+          - 1.2.3.4
+          - 2.3.4.5
+  app.fs.adfs.infra:
+      
+        type:   ip_group
+        condition: 
+          - 1.2.3.4
+          - 2.3.4.5
+  app.data.commvault.infra:
+      
+        type:   ip_group
+        condition: 
+          - 1.2.3.4
+          - 2.3.4.5
+
+  consumes.cfapi.all.vrli.sddc: 
+      type:   member_group
+      condition:
+        - app.all.sddcmgr.sddc
+        - app.all.ws1a-reg.sddc
+        - app.all.ws1a-xreg.sddc
+        - app.all.vra.sddc
+        - app.all.vrni.sddc
+        - app.all.vrops.sddc
+        - app.all.vrlcm.sddc
+  consumes.dns.dns.infra: 
+      type:   member_group
+      condition:
+        - app.all.ws1a-reg.sddc
+        - app.all.ws1a-xreg.sddc
+        - app.all.vra.sddc
+        - app.all.vrli.sddc
+        - app.all.vrni.sddc
+        - app.all.vrops.sddc
+        - app.all.vrlcm.sddc
+  consumes.https.all.vra.sddc: 
+      type:   member_group
+      condition:
+        - app.all.sddcmgr.sddc
+        - app.all.vrlcm.sddc
+        - net.all.admin.infra
+  consumes.https.all.vrlcm.sddc:
+      type:   member_group
+      condition:     
+        - app.all.sddcmgr.sddc
+        - net.all.admin.infra
+        - app.all.vra.sddc
+        - app.all.vrops.sddc
+  consumes.https.all.vrli.sddc:
+      type:   member_group
+      condition:     
+        - app.all.sddcmgr.sddc
+        - app.all.vrlcm.sddc
+        - net.all.admin.infra
+        - app.all.vrops.sddc
+  consumes.https.all.ws1a-reg.infra:
+      type:   member_group
+      condition:     
+        - app.all.sddcmgr.sddc
+        - app.all.vrlcm.sddc
+        - net.all.admin.infra
+  consumes.https.all.ws1a-xreg.sddc:
+      type:   member_group
+      condition:     
+        - app.all.sddcmgr.sddc
+        - app.all.vrlcm.sddc
+        - net.all.admin.infra
+  consumes.https.analytics.vrops.sddc: 
+      type:   member_group
+      condition:
+        - app.all.sddcmgr.sddc
+        - app.all.vrlcm.sddc
+        - net.all.admin.infra
+  consumes.https.collector.vrni.sddc: 
+      type:   member_group
+      condition:
+        - app.all.sddcmgr.sddc
+        - app.all.vrlcm.sddc
+        - net.all.admin.infra
+  consumes.https.endpoint.vrni.sddc: 
+      type:   member_group
+      condition:
+        - app.collector.vrni.sddc
+  consumes.https.endpoint.vrops.sddc: 
+      type:   member_group
+      condition:
+        - app.all.vrops.sddc
+  consumes.https.esxi.sddc: 
+      type:   member_group
+      condition:
+        - app.all.vrlcm.sddc
+        - app.all.vrni.sddc
+        - app.collector.vrni.sddc
+        - app.all.vrops.sddc
+  consumes.https.lb.vra.sddc: 
+      type:   member_group
+      condition:
+        - app.all.sddcmgr.sddc
+        - app.all.vrlcm.sddc
+        - net.all.admin.infra
+        - net.all.user.infra
+  consumes.https.lb.vrops.sddc: 
+      type:   member_group
+      condition:
+        - app.all.sddcmgr.sddc
+        - app.all.vrlcm.sddc
+        - net.all.admin.infra
+        - net.all.user.infra
+        - app.all.vcenter.sddc
+        - app.all.vrli.sddc
+  consumes.https.lb.ws1a-reg.infra: 
+      type:   member_group
+      condition:
+        - app.all.vrops.sddc
+        - app.all.sddcmgr.sddc
+        - net.all.admin.infra
+  consumes.https.lb.ws1a-xreg.sddc: 
+      type:   member_group
+      condition:
+        - app.all.vrops.sddc
+        - app.all.sddcmgr.sddc
+        - app.all.vrlcm.sddc
+        - net.all.user.infra
+        - net.all.admin.infra
+  consumes.https.nsxmgr.sddc: 
+      type:   member_group
+      condition:
+        - app.all.vra.sddc
+        - app.collector.vrni.sddc
+        - app.all.vrops.sddc
+        - app.all.vrlcm.sddc
+  consumes.https.platform.vrni.sddc: 
+      type:   member_group
+      condition:
+        - app.all.vrops.sddc
+        - app.all.vrlcm.sddc
+        - net.all.admin.infra
+  consumes.https.sddcmgr.sddc: 
+      type:   member_group
+      condition:
+        - app.all.vra.sddc
+        - app.all.vrops.sddc
+  consumes.https.vcenter.sddc: 
+      type:   member_group
+      condition:
+        - app.all.vra.sddc
+        - app.all.vrli.sddc
+        - app.collector.vrni.sddc
+        - app.all.vrops.sddc
+        - app.all.vrlcm.sddc
+  consumes.icmp.all.sddc: 
+      type:   member_group
+      condition:
+        - app.all.sddcmgr.sddc
+  consumes.kerberos.ad.infra: 
+      type:   member_group
+      condition:
+        - app.all.ws1a-reg.sddc
+        - app.all.ws1a-xreg.sddc
+        - app.all.vrli.sddc
+  consumes.ldap.ad.infra: 
+      type:   member_group
+      condition:
+        - app.all.ws1a-reg.sddc
+        - app.all.ws1a-xreg.sddc
+        - app.all.vrli.sddc
+        - app.platform.vrni.sddc
+        - app.all.vrops.sddc
+  consumes.ntp.ntp.infra: 
+      type:   member_group
+      condition:
+        - app.all.ws1a-reg.sddc
+        - app.all.ws1a-xreg.sddc
+        - app.all.vra.sddc
+        - app.all.vrli.sddc
+        - app.all.vrni.sddc
+        - app.all.vrops.sddc
+        - app.all.vrlcm.sddc
+
+
+  consumes.proxy.proxy.infra: 
+      type:   member_group
+      condition:
+        - app.all.ws1a-reg.sddc
+        - app.all.ws1a-xreg.sddc
+        - app.all.vra.sddc
+        - app.all.vrli.sddc
+        - app.all.vrni.sddc
+        - app.all.vrops.sddc
+        - app.all.vrlcm.sddc
+  consumes.smtp.smtp.infra: 
+      type:   member_group
+      condition:
+        - app.all.vra.sddc
+        - app.all.vrli.sddc
+        - app.all.vrni.sddc
+        - app.all.vrops.sddc
+  consumes.snmp.endpoint.vrni.sddc: 
+      type:   member_group
+      condition:
+        - app.collector.vrni.sddc
+    
+  consumes.snmp.endpoint.vrops.sddc: 
+      type:   member_group
+      condition:
+        - app.all.vrops.sddc
+
+  consumes.ssh.all.vra.sddc: 
+      type:   member_group
+      condition:
+        - app.all.sddcmgr.sddc
+        - app.all.ws1a-xreg.sddc
+        - app.all.vrlcm.sddc
+        - net.all.admin.infra
+  consumes.ssh.all.vrlcm.sddc: 
+      type:   member_group
+      condition:
+        - app.all.sddcmgr.sddc
+        - app.all.vra.sddc
+        - net.all.admin.infra
+  consumes.ssh.all.vrli.sddc: 
+      type:   member_group
+      condition:
+        - net.all.admin.infra
+
+  consumes.ssh.all.vrni.sddc: 
+      type:   member_group
+      condition:
+        - app.all.vrlcm.sddc
+        - net.all.admin.infra
+      
+  consumes.ssh.all.vrops.sddc: 
+      type:   member_group
+      condition:
+        - app.all.sddcmgr.sddc
+        - app.all.vrlcm.sddc
+        - net.all.admin.infra
+
+
+  consumes.ssh.all.ws1a-reg.infra: 
+      type:   member_group
+      condition:
+        - app.all.sddcmgr.sddc
+        - app.all.vrlcm.sddc
+        - net.all.admin.infra
+  consumes.ssh.all.ws1a-xreg.sddc: 
+      type:   member_group
+      condition:
+        - net.all.admin.infra
+  consumes.ssh.endpoint.vrni.sddc: 
+      type:   member_group
+      condition:
+        - app.collector.vrni.sddc
+  consumes.ssh.endpoint.vrops.sddc: 
+      type:   member_group
+      condition:
+        - app.all.vrops.sddc
+
+  consumes.ssh.nsxmgr.sddc: 
+      type:   member_group
+      condition:
+        - app.collector.vrni.sddc
+
+  consumes.syslog.all.vrli.sddc: 
+      type:   member_group
+      condition:
+        - app.all.vcenter.sddc
+        - app.all.esxi.sddc
+        - app.all.nsxmgr.sddc
+  consumes.syslog.syslog.infra: 
+      type:   member_group
+      condition:
+        - app.all.ws1a-reg.sddc
+        - app.all.ws1a-xreg.sddc
+        - app.all.vra.sddc
+        - app.all.vrli.sddc
+        - app.all.vrni.sddc
+        - app.all.vrops.sddc
+        - app.all.vrlcm.sddc
+  consumes.vrlcm.all.vrli.sddc: 
+      type:   member_group
+      condition:
+        - app.all.vrlcm.sddc
+  consumes.netflow.vrni.sddc: 
+      type:   member_group
+      condition:
+        - app.collector.vrni.sddc
+        - app.all.esxi.sddc
+  consumes.backup.data.commvault.infra: 
+      type:   member_group
+      condition:
+        - net.all.backup.infra
+
+  provides.cfapi.all.vrli.sddc:
+      type:   member_group
+      condition:
+        - app.all.vrli.sddc
+  provides.dns.dns.infra:
+      type:   member_group
+      condition:
+        - app.all.dns.infra
+  provides.https.all.vra.sddc:
+      type:   member_group
+      condition:
+        - app.all.vra.sddc
+  provides.https.all.vrlcm.sddc:
+      type:   member_group
+      condition:
+        - app.all.vrlcm.sddc
+  provides.https.all.vrli.sddc:
+      type:   member_group
+      condition:
+        - app.all.vrli.sddc
+  provides.https.all.ws1a-reg.sddc:
+      type:   member_group
+      condition:
+        - app.all.ws1a-reg.sddc
+  provides.https.all.ws1a-xreg.sddc:
+      type:   member_group
+      condition:
+        - app.all.ws1a-xreg.sddc
+  provides.https.analytics.vrops.sddc:
+      type:   member_group
+      condition:
+        - app.analytics.vrops.sddc
+  provides.https.collector.vrni.sddc:
+      type:   member_group
+      condition:
+        - app.collector.vrni.sddc
+  provides.https.collector.vrops.sddc:
+      type:   member_group
+      condition:
+        - app.collector.vrops.sddc
+  provides.https.endpoint.vrni.sddc:
+      type:   member_group
+      condition:
+        - stub
+  provides.https.endpoint.vrops.sddc:
+      type:   member_group
+      condition:
+        - stub
+  provides.https.esxi.sddc:
+      type:   member_group
+      condition:
+        - app.all.esxi.sddc
+  provides.https.lb.vra.sddc:
+      type:   member_group
+      condition:
+        - app.lb.vra.sddc
+  provides.https.lb.vrops.sddc:
+      type:   member_group
+      condition:
+        - app.lb.vrops.sddc
+  provides.https.lb.ws1a-reg.sddc:
+      type:   member_group
+      condition:
+        - app.lb.ws1a-reg.sddc
+
+  provides.https.lb.ws1a-xreg.sddc:
+      type:   member_group
+      condition:
+        - app.lb.ws1a-xreg.sddc
+  provides.https.nsxmgr.sddc:
+      type:   member_group
+      condition:
+        - app.all.nsxmgr.sddc
+  provides.https.platform.vrni.sddc:
+      type:   member_group
+      condition:
+        - app.all.vrni.sddc
+
+  provides.https.sddcmgr.sddc:
+      type:   member_group
+      condition:
+        - app.all.sddcmgr.sddc
+
+  provides.https.vcenter.sddc:
+      type:   member_group
+      condition:
+        - app.all.vcenter.sddc
+
+  provides.icmp.all.sddc:
+      type:   member_group
+      condition:
+        - app.all.ws1a-reg.sddc
+        - app.all.ws1a-xreg.sddc
+        - app.all.vra.sddc
+        - app.all.vrli.sddc
+        - app.all.vrni.sddc
+        - app.collector-dr.vrni.sddc
+        - app.all.vrops.sddc
+        - app.all.vrlcm.sddc
+
+
+  provides.kerberos.ad.infra:
+      type:   member_group
+      condition:
+        - app.all.ad.infra
+
+  provides.ldap.ad.infra:
+      type:   member_group
+      condition:
+        - app.all.ad.infra
+
+  # provides.netflow.vrni.sddc:
+  #     type:   member_group
+  #     condition:
+  #       - app.collector.vrni.sddc
+  #       - app.all.esxi.sddc
+
+  provides.ntp.ntp.infra:
+      type:   member_group
+      condition:
+        - app.all.ntp.infra
+
+  provides.proxy.proxy.infra:
+      type:   member_group
+      condition:
+        - app.all.proxy.infra
+
+  provides.smtp.smtp.infra:
+      type:   member_group
+      condition:
+        - app.all.smtp.infra
+  provides.snmp.endpoint.vrni.sddc:
+      type:   member_group
+      condition:
+        - stub
+
+  provides.snmp.endpoint.vrops.sddc:
+      type:   member_group
+      condition:
+        - stub
+  provides.ssh.all.vrlcm.sddc:
+      type:   member_group
+      condition:
+        - app.all.vrlcm.sddc
+  provides.ssh.all.vrli.sddc:
+      type:   member_group
+      condition:
+        - app.all.vrli.sddc
+  provides.ssh.all.vrni.sddc:
+      type:   member_group
+      condition:
+        - app.all.vrni.sddc
+        - app.collector-dr.vrni.sddc
+  provides.ssh.all.vrops.sddc:
+      type:   member_group
+      condition:
+        - app.all.vrops.sddc
+
+  provides.ssh.all.ws1a-reg.infra:
+      type:   member_group
+      condition:
+        - app.all.ws1a-reg.sddc
+
+  provides.ssh.all.ws1a-xreg.sddc:
+      type:   member_group
+      condition:
+        - app.all.ws1a-xreg.sddc
+
+  provides.ssh.endpoint.vrni.sddc:
+      type:   member_group
+      condition:
+        - stub
+  provides.ssh.endpoint.vrops.sddc:
+      type:   member_group
+      condition:
+        - stub
+  provides.ssh.nsxmgr.sddc:
+      type:   member_group
+      condition:
+        - app.all.nsxmgr.sddc
+  provides.syslog.all.vrli.sddc:
+      type:   member_group
+      condition:
+        - app.all.vrli.sddc
+  provides.syslog.syslog.infra:
+      type:   member_group
+      condition:
+        - app.all.syslog.infra
+  provides.vrlcm.all.vrli.sddc:
+      type:   member_group
+      condition:
+        - app.all.vrli.sddc
+  provides.backup.data.commvault.infra:
+      type:   member_group
+      condition:
+        - app.data.commvault.infra
+
+
+  net.all.admin.infra: 
+      type:   ip_group
+      condition:
+        - 1.2.3.0/24
+
+  net.all.user.infra: 
+      type:   ip_group
+      condition:
+        - 1.2.3.0/24
+
+  net.all.backup.infra: 
+      type:   ip_group
+      condition:
+        - 1.2.3.0/24
+
+
+  segment.backup.infra: 
+      type:   segment_group
+      condition:
+        - VLAB01-VTEP
+
+  segment.all.sddc: 
+    type:   segment_group
+    condition:
+      - VLAB01-VTEP
+      - VLAB02-VTEP
+
+
+## enter your existing loadbalancer_group groups here
+  NLB.VIP.[a]:
+    type: existing_group
+    condition: 
+      - stub
+  NLB.VIP.[vc]:
+    type: existing_group
+    condition: 
+      - stub
+  
+## Enter your empty groups here 
+  emergency allow:
+    type: placeholder_group
+  emergency reject: 
+    type: placeholder_group
+
